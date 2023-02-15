@@ -1,5 +1,7 @@
 import "./App.css";
 import { useEffect } from "react";
+
+//Importing a pure JS function
 import { gantChart } from "./chart/anychartGantt";
 
 function App() {
