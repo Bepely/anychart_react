@@ -1,3 +1,6 @@
+//This is the main function of a Gantt Chart. 
+//All of the appereance settings should be done here
+
 export const gantChart = (container, data) => {
   // Creates Gantt project chart.
   var chart = anychart.ganttProject();

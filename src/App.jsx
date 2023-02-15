@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { gantChart } from "./chart/anychartGantt";
 
 function App() {
+  //Creating data variable
   const myData = [
     {
       name: "Root",
@@ -66,8 +67,12 @@ function App() {
     },
   ];
 
+  //Calling useEffect to get chart at the right time
   useEffect(() => {
+    //Making a chart instance
     const chart = gantChart("chart_container", myData);
+
+    //Preventing duplicate renders
     return () => chart.dispose();
   }, []);
 
