@@ -1,6 +1,6 @@
 ## React + Anychart
 
-In this example you can find out how to use Anychart with React JS and Vanilla JS together.
+In this example you can find out how to get yAxis value o
 
 ## Instruction
 

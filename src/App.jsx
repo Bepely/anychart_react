@@ -2,77 +2,36 @@ import "./App.css";
 import { useEffect } from "react";
 
 //Importing a pure JS function
-import { gantChart } from "./chart/anychartGantt";
+import { stockChart } from "./chart/anychartStock";
 
 function App() {
   //Creating data variable
-  const myData = [
-    {
-      name: "Root",
-      children: [
-        {
-          name: "Parent 1",
-          children: [
-            {
-              name: "Child 1-1",
-              actualStart: "2023-02-01",
-              actualEnd: "2023-02-02T09:00",
-            },
-            {
-              name: "Child 1-2",
-              actualStart: "2023-02-02",
-              actualEnd: "2023-02-02T11:00",
-            },
-            {
-              name: "Child 1-3",
-              actualStart: "2023-02-01",
-              actualEnd: "2023-02-1T09:00",
-            },
-          ],
-        },
-        {
-          name: "Parent 2",
-          children: [
-            {
-              name: "Child 2-1",
-              actualStart: "2023-02-02",
-              actualEnd: "2023-02-02T09:00",
-            },
-            {
-              name: "Child 2-2",
-              actualStart: "2023-02-02",
-              actualEnd: "2023-02-02T21:00",
-            },
-            {
-              name: "Child 2-3",
-              actualStart: "2023-02-03",
-              actualEnd: "2023-02-04T10:00",
-            },
-          ],
-        },
-        {
-          name: "Parent 3",
-          children: [
-            {
-              name: "Child 3-1",
-              actualStart: "2023-02-01",
-              actualEnd: "2023-02-02T15:00",
-            },
-            {
-              name: "Child 3-2",
-              actualStart: "2023-02-02",
-              actualEnd: "2023-02-03T09:00",
-            },
-          ],
-        },
-      ],
-    },
+  let myData = [
+    ["2015-12-24", 511.53, 514.98, 505.79, 506.4],
+    ["2015-12-25", 512.53, 514.88, 505.69, 507.34],
+    ["2015-12-26", 511.83, 514.98, 505.59, 506.23],
+    ["2015-12-27", 511.22, 515.3, 505.49, 506.47],
+    ["2015-12-28", 510.35, 515.72, 505.23, 505.8],
+    ["2015-12-29", 510.53, 515.86, 505.38, 508.25],
+    ["2015-12-30", 511.43, 515.98, 505.66, 507.45],
+    ["2015-12-31", 511.5, 515.33, 505.99, 507.98],
+    ["2016-01-01", 511.32, 514.29, 505.99, 506.37],
+    ["2016-01-02", 511.7, 514.87, 506.18, 506.75],
+    ["2016-01-03", 512.3, 514.78, 505.87, 508.67],
+    ["2016-01-04", 512.5, 514.77, 505.83, 508.35],
+    ["2016-01-05", 511.53, 516.18, 505.91, 509.42],
+    ["2016-01-06", 511.13, 516.01, 506.0, 509.26],
+    ["2016-01-07", 510.93, 516.07, 506.0, 510.99],
+    ["2016-01-08", 510.88, 515.93, 505.22, 509.95],
+    ["2016-01-09", 509.12, 515.97, 505.15, 510.12],
+    ["2016-01-10", 508.53, 516.13, 505.66, 510.42],
+    ["2016-01-11", 508.9, 516.24, 505.73, 510.4],
   ];
 
   //Calling useEffect to get chart at the right time
   useEffect(() => {
     //Making a chart instance
-    const chart = gantChart("chart_container", myData);
+    const chart = stockChart("chart_container", myData);
 
     //Preventing duplicate renders
     return () => chart.dispose();
