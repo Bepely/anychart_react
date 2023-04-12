@@ -7,16 +7,19 @@ import { mainChart } from "./chart/anychartGantt";
 function App() {
   //Creating items state variable
   const [items, setItems] = useState([
-    { index: "1", text: 10 },
-    { index: "2", text: 12 },
-    { index: "3", text: 18 },
-    { index: "4", text: 11 },
+    { index: "1", text: `Value: <b style="color: red">10</b>` },
+    { index: "2", text: `Value: <b style="color: red">14</b>` },
+    { index: "3", text: `Value: <b style="color: red">12</b>` },
+    { index: "4", text: `Value: <b style="color: red">15</b>` },
   ]);
 
   //Add a new item to the state function
   const addRandomItem = () => {
     const randomValue = Math.floor(Math.random() * 20) + 1;
-    const newItem = { index: items.length + 1, text: randomValue };
+    const newItem = {
+      index: items.length + 1,
+      text: `Value: <b style="color: red">${randomValue}</b>`,
+    };
     setItems((prevItems) => [...prevItems, newItem]);
   };
 
