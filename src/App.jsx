@@ -1,85 +1,62 @@
 import "./App.css";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 
 //Importing a pure JS function
-import { gantChart } from "./chart/anychartGantt";
+import { mainChart } from "./chart/anychartGantt";
 
 function App() {
-  //Creating data variable
-  const myData = [
-    {
-      name: "Root",
-      children: [
-        {
-          name: "Parent 1",
-          children: [
-            {
-              name: "Child 1-1",
-              actualStart: "2023-02-01",
-              actualEnd: "2023-02-02T09:00",
-            },
-            {
-              name: "Child 1-2",
-              actualStart: "2023-02-02",
-              actualEnd: "2023-02-02T11:00",
-            },
-            {
-              name: "Child 1-3",
-              actualStart: "2023-02-01",
-              actualEnd: "2023-02-1T09:00",
-            },
-          ],
-        },
-        {
-          name: "Parent 2",
-          children: [
-            {
-              name: "Child 2-1",
-              actualStart: "2023-02-02",
-              actualEnd: "2023-02-02T09:00",
-            },
-            {
-              name: "Child 2-2",
-              actualStart: "2023-02-02",
-              actualEnd: "2023-02-02T21:00",
-            },
-            {
-              name: "Child 2-3",
-              actualStart: "2023-02-03",
-              actualEnd: "2023-02-04T10:00",
-            },
-          ],
-        },
-        {
-          name: "Parent 3",
-          children: [
-            {
-              name: "Child 3-1",
-              actualStart: "2023-02-01",
-              actualEnd: "2023-02-02T15:00",
-            },
-            {
-              name: "Child 3-2",
-              actualStart: "2023-02-02",
-              actualEnd: "2023-02-03T09:00",
-            },
-          ],
-        },
-      ],
-    },
-  ];
+  //Creating items state variable
+  const [items, setItems] = useState([
+    { index: "1", text: 10 },
+    { index: "2", text: 12 },
+    { index: "3", text: 18 },
+    { index: "4", text: 11 },
+  ]);
+
+  //Add a new item to the state function
+  const addRandomItem = () => {
+    const randomValue = Math.floor(Math.random() * 20) + 1;
+    const newItem = { index: items.length + 1, text: randomValue };
+    setItems((prevItems) => [...prevItems, newItem]);
+  };
+
+  //Remove random item from the state function
+  const removeRandomItem = () => {
+    const randomIndex = Math.floor(Math.random() * items.length);
+    setItems((prevItems) => [
+      ...prevItems.slice(0, randomIndex),
+      ...prevItems.slice(randomIndex + 1),
+    ]);
+  };
 
   //Calling useEffect to get chart at the right time
   useEffect(() => {
     //Making a chart instance
-    const chart = gantChart("chart_container", myData);
+    const chart = mainChart("chart_container", items);
 
     //Preventing duplicate renders
     return () => chart.dispose();
-  }, []);
+  }, [items]);
 
   return (
     <div className="App">
+      <div>
+        <button
+          onClick={() => {
+            addRandomItem();
+          }}
+        >
+          Add New Random Item
+        </button>
+        <button
+          onClick={() => {
+            removeRandomItem();
+          }}
+        >
+          Remove Random Item
+        </button>
+      </div>
+
       <div id="chart_container"></div>
     </div>
   );

@@ -6,25 +6,21 @@
  * @returns {Object} Main chart object
  */
 
-export const gantChart = (container, data) => {
+export const mainChart = (container, data) => {
   // Create Gantt project chart.
-  var chart = anychart.ganttProject();
+  var legend = anychart.standalones.legend();
 
-  // Set the data for the chart
-  chart.data(data, "as-tree");
+  //enable HTML in the legend items
+  legend.useHtml(true);
 
-  // Set title for the chart
-  chart.title("Creating Gantt chart with React and Anychart");
-
-  // Set correct Zoom level
-  chart.fitAll();
+  legend.items(data);
 
   // Set container for the chart
-  chart.container(container);
+  legend.container(container);
 
   // Draw the chart in the container
-  chart.draw();
+  legend.draw();
 
   //Return Chart object
-  return chart;
+  return legend;
 };
