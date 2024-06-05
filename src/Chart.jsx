@@ -5,7 +5,7 @@ const AnyChartPie = () => {
   const chartContainer = useRef(null);
 
   anychart.onDocumentReady(function () {
-    if (chartContainer.current) {
+    if (chartContainer.current && !chartContainer.current.hasChildNodes()) {
       const chart = anychart.pie();
       chart.data([
         { x: "A", value: 637166 },
@@ -19,12 +19,7 @@ const AnyChartPie = () => {
     }
   });
 
-  return (
-    <div
-      id="container"
-      ref={chartContainer}
-    />
-  );
+  return <div id="container" ref={chartContainer} />;
 };
 
 export default AnyChartPie;
