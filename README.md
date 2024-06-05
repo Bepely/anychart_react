@@ -1,10 +1,13 @@
 ## React + Anychart
 
-In this example you can find out how to use Anychart with React JS and Vanilla JS together.
+This example shows how to use AnyChart combined with React JS and Vanilla JS.
 
 ## Instruction
+ You must have NodeJS installed.
+  
+    1. Change your current directory to /anychart_react   
+    2. Install dependencies by typing "npm i" in your terminal 
+    3. Run the development server by typing "npm run dev" in your terminal    
 
-1. You have to have NodeJS   
-2. Change your current directory to /anychart_react   
-3. npm i   
-4. npm run dev
+
+
